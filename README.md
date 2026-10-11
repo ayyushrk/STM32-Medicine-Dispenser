@@ -17,3 +17,6 @@ An automated, intelligent pill-dispensing system designed to help patients—esp
 ## 🛠️ Tech Stack & Components
 - **Hardware**: STM32, DS3231 RTC Module, SG90 / MG996R Servo Motors, LCD/OLED Display, Buzzer, LEDs.
 - **Software**: C++ (Arduino IDE)
+
+## 🔌 Circuit Diagram / Schematic
+![Circuit Schematic](circuit-schematic.png)
