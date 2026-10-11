@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "author": "Ayush",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-stm32-bluepill", "id": "mcu", "top": 50, "left": 50, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 20, "left": 400, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 180, "left": 400, "attrs": {} },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": 487.6,
+      "left": 370.4,
+      "attrs": {
+        "keys": [ "1", "2", "3", "A", "4", "5", "6", "B", "7", "8", "9", "C", "*", "0", "#", "D" ]
+      }
+    },
+    {
+      "type": "wokwi-a4988",
+      "id": "driver1",
+      "top": 300,
+      "left": 50,
+      "attrs": { "current": "1" }
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "motor1",
+      "top": 71.71,
+      "left": -229.52,
+      "attrs": { "size": "42", "display": "angle" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnConfirm",
+      "top": 380.6,
+      "left": 412.8,
+      "attrs": { "color": "green", "label": "CONFIRM" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": 492,
+      "left": 280.2,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-led", "id": "ledRed", "top": 726, "left": 90.2, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-led",
+      "id": "ledGreen",
+      "top": 735.6,
+      "left": 167,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledBlue",
+      "top": 745.2,
+      "left": 253.4,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 695.15,
+      "left": 38.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 685.55,
+      "left": 144,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 685.55,
+      "left": 240,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "lcd1:SCL", "mcu:B6", "green", [] ],
+    [ "lcd1:SDA", "mcu:B7", "purple", [] ],
+    [ "lcd1:VCC", "mcu:5V.1", "red", [] ],
+    [ "lcd1:GND", "mcu:GND.1", "black", [] ],
+    [ "rtc1:SCL", "mcu:B6", "green", [] ],
+    [ "rtc1:SDA", "mcu:B7", "purple", [] ],
+    [ "rtc1:VCC", "mcu:5V.1", "red", [] ],
+    [ "rtc1:GND", "mcu:GND.1", "black", [] ],
+    [ "keypad1:R1", "mcu:A8", "green", [] ],
+    [ "keypad1:R2", "mcu:A9", "green", [] ],
+    [ "keypad1:R3", "mcu:A10", "green", [] ],
+    [ "keypad1:R4", "mcu:A11", "green", [] ],
+    [ "keypad1:C1", "mcu:B12", "purple", [] ],
+    [ "keypad1:C2", "mcu:B13", "purple", [] ],
+    [ "keypad1:C3", "mcu:B14", "purple", [] ],
+    [ "keypad1:C4", "mcu:B15", "purple", [] ],
+    [ "driver1:STEP", "mcu:A0", "green", [] ],
+    [ "driver1:DIR", "mcu:A1", "green", [] ],
+    [ "driver1:ENABLE", "mcu:A2", "green", [] ],
+    [ "driver1:VDD", "mcu:5V.1", "red", [] ],
+    [ "driver1:GND.1", "mcu:GND.1", "black", [] ],
+    [ "driver1:VMOT", "mcu:5V.1", "red", [] ],
+    [ "driver1:GND.2", "mcu:GND.1", "black", [] ],
+    [ "driver1:RESET", "mcu:5V.1", "red", [] ],
+    [ "driver1:SLEEP", "mcu:5V.1", "red", [] ],
+    [ "driver1:2A", "motor1:A+", "green", [] ],
+    [ "driver1:2B", "motor1:A-", "green", [] ],
+    [ "driver1:1A", "motor1:B+", "blue", [] ],
+    [ "driver1:1B", "motor1:B-", "blue", [] ],
+    [ "btnConfirm:1.l", "mcu:A3", "purple", [] ],
+    [ "btnConfirm:2.l", "mcu:GND.1", "black", [] ],
+    [ "buzzer1:1", "mcu:A4", "purple", [] ],
+    [ "buzzer1:2", "mcu:GND.1", "black", [] ],
+    [ "mcu:A5", "r1:1", "green", [] ],
+    [ "r1:2", "ledRed:A", "green", [] ],
+    [ "ledRed:C", "mcu:GND.1", "black", [] ],
+    [ "mcu:A6", "r2:1", "green", [] ],
+    [ "r2:2", "ledGreen:A", "green", [] ],
+    [ "ledGreen:C", "mcu:GND.1", "black", [] ],
+    [ "mcu:A7", "r3:1", "green", [] ],
+    [ "r3:2", "ledBlue:A", "green", [] ],
+    [ "ledBlue:C", "mcu:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
